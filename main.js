@@ -49,3 +49,21 @@ function updateMousePosition(eX, eY) {
   pointer.x = eX;
   pointer.y = eY;
 }
+
+const p = { x: 0, y: 0 }; // coordinates to draw
+
+update(0);
+
+function update(t) {
+  ctx?.clearRect(0, 0, canvas.width, canvas.height);
+
+  // copy cursor position
+  p.x = pointer.x;
+  p.y = pointer.y;
+  // draw a dot
+  ctx?.beginPath();
+  ctx?.arc(p.x, p.y, 5, 0, 2 * Math.PI);
+  ctx?.fill();
+
+  window.requestAnimationFrame(update);
+}
