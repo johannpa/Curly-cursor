@@ -36,5 +36,16 @@ for (let i = 0; i < params.pointsNumber; i++) {
 }
 
 window.addEventListener("click", (e) => {
-  updateMousePosition(".pageX, e.pageY");
+  updateMousePosition(e.pageX, e.pageY);
 });
+window.addEventListener("mousemove", (e) => {
+  updateMousePosition(e.pageX, e.pageY);
+});
+window.addEventListener("touchmove", (e) => {
+  updateMousePosition(e.targetTouches[0].pageX, e.targetTouches[0].pageY);
+});
+
+function updateMousePosition(eX, eY) {
+  pointer.x = eX;
+  pointer.y = eY;
+}
